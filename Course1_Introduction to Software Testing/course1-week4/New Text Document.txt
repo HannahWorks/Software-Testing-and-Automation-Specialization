@@ -1,0 +1,12 @@
+RecipeBook recipeServ = mock(RecipeBook.class);
+Inventory inventServ = new Inventory(); //mock(Inventory.class);
+
+when(recipeServ.getRecipes()).thenReturn(stubRecipies);
+coffeeMaker = new CoffeeMaker(recipeServ, inventServ);
+
+assertEquals(15, coffeeMaker.makeCoffee(0, 65));
+
+//after purchase coffee the inventory should!! decrease.
+//Although the SUT has an error when trying to decrease (It's Increasing instead of) the amount of coffee
+
+assertEquals(12, inventServ.getCoffee() );
