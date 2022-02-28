@@ -1,0 +1,7 @@
+Mutation M6
+
+The mutation in this example is a Boolean fault in ModeController.java in 
+the following code at line 54: 
+
+      startPressed = true;    // Fault here!  Should be false.
+   

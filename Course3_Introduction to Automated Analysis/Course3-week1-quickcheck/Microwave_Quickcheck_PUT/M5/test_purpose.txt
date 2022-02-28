@@ -1,0 +1,8 @@
+Mutation M4
+
+The mutation in this example is an off-by-one fault in Preset.java in 
+the following code. 
+
+   static final byte [] ROLLOVER = {5, 9, 5, 8};  // Fault here!  Should be 9 rather than 8 for "seconds" rollover
+   
+It should manifest itself in incorrect decrementing of time.

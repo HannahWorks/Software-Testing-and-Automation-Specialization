@@ -1,0 +1,13 @@
+Mutation M2
+
+The mutation in this example is a off-by-one error in DisplayController.java in 
+the following code: 
+
+public synchronized void clearButtonPressed() {
+      for (int i=0; i < 9; i++) {         // Fault here: should be < 10
+         digitPressed[i] = false;
+      }
+      clearPressed = false;
+   }
+   
+It should manifest itself in a "stuck" button press. 

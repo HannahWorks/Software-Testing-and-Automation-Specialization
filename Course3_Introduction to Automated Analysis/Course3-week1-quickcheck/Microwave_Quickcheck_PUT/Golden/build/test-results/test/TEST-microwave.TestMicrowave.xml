@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="microwave.TestMicrowave" tests="3" skipped="0" failures="0" errors="0" timestamp="2022-02-16T19:14:17" hostname="DESKTOP-5B35QQB" time="0.112">
+  <properties/>
+  <testcase name="checkCookingTimes" classname="microwave.TestMicrowave" time="0.081"/>
+  <testcase name="checkPreset" classname="microwave.TestMicrowave" time="0.012"/>
+  <testcase name="checkUnusualTimes" classname="microwave.TestMicrowave" time="0.019"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

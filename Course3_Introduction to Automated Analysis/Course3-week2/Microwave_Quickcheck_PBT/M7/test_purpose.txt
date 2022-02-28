@@ -1,0 +1,12 @@
+Mutation M7
+
+The mutation in this example is a numeric fault in DisplayController.java in 
+the following code: 
+
+   public synchronized int timeToCook() {
+      return digits[SECONDS] + 
+            10*digits[TENS_OF_SECONDS] + 
+            60*digits[MINUTES] + 
+            600 + digits[TENS_OF_MINUTES]; // fault: should be 600 * digits
+   }
+   

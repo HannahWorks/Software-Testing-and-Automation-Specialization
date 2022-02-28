@@ -1,0 +1,10 @@
+Mutation M8
+
+The mutation in this example is an off-by-one fault in microwave.java in 
+the following code: 
+
+   public void tick() {
+      dc.tick(mode);
+      mode = mc.tick(doorOpen, dc.timeToCook() != 1); // Fault: off by one error
+      cooking = (mode == ModeController.Mode.Cooking);
+   }

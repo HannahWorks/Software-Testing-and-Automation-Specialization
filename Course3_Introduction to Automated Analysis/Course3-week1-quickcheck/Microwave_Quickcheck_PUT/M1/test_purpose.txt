@@ -1,0 +1,4 @@
+Mutation M1
+
+The mutation in this file is a named constant error where the MINUTES element 
+of the digits array in DisplayController.java is incorrectly set to 2 rather than 1. 

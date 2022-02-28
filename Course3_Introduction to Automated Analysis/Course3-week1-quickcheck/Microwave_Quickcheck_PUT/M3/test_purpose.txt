@@ -1,0 +1,8 @@
+Mutation M3
+
+The mutation in this example is a Boolean fault in DisplayController.java in 
+the following code at line 96: 
+
+         if (secondElapsed() || timeToCook() != 0) {   // Fault here: should be && not ||
+   
+It should manifest itself in incorrect decrementing of time.

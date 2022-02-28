@@ -1,0 +1,8 @@
+Mutation M5
+
+The mutation in this example is a Boolean fault in ModeController.java in 
+the following code at line 39: 
+
+         mode = Mode.Cooking; // Fault here: should be suspended mode!
+   
+It should manifest itself in incorrect cooking.

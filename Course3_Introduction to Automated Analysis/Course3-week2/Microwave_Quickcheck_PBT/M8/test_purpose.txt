@@ -1,0 +1,10 @@
+Mutation M8
+
+The mutation in this example is a code omission fault in microwave.java in 
+the following code:
+
+   public void clearPressed() { mc.setClearPressed(true); 
+                         // dc.setClearPressed(true);   Fault!  clearPressed not transmitted to DC
+                        }
+ 
+

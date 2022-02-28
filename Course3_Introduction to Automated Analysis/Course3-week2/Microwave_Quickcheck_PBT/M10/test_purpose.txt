@@ -1,0 +1,9 @@
+Mutation M8
+
+The mutation in this example is a mode fault in ModeController.java in 
+the following code at line 47: 
+
+      ...
+      else if (startPressed && !doorOpen) {
+         mode = Mode.Suspended;     // Fault!  Should be cooking.
+      }

@@ -1,0 +1,32 @@
+Background: 
+given: presets are 
+   | location | name          | timeToCook |
+   |   1      | popcorn       |  55        | 
+   |   2      | pizza slice   |  30        | 
+   |   3      | cup of coffee |  65        |
+   |   4      | cup of soup   |  60        |
+and: polling rate is 20 ms   
+
+
+Scenario Outline: Cooking for different amounts of time.
+  This scenario illustrates different manual cooking scenarios
+  Given Mike presses the 2 key
+  And Mike presses the 0 key
+  When <time> seconds elapse
+  Then digits reads <digits>
+  And mode is <mode>
+
+Examples:
+  | time | digits     | mode    | 
+  | 5    | 0015       | cooking |
+  | 10   | 0010       | cooking | 
+  | 19   | 0001       | cooking | 
+  | 20   | 0000       | setup   |
+  | 21   | 0000       | setup   |
+  
+
+ Scenario: Mike mashes the keypad
+    Given Mike presses the keys: 2, 5, 7, 9
+  
+
+  
