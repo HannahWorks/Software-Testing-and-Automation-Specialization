@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Edit an Recipe with out of range index 4 catch an exception" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-12T06:52:18" hostname="DESKTOP-5B35QQB" time="0.0">
+  <properties/>
+  <testcase name="When user edit Recipe with wrong index xy it will catch an exception" classname="Scenario: Edit an Recipe with out of range index 4 catch an exception" time="0.0"/>
+  <testcase name="classMethod" classname="Scenario: Edit an Recipe with out of range index 4 catch an exception" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

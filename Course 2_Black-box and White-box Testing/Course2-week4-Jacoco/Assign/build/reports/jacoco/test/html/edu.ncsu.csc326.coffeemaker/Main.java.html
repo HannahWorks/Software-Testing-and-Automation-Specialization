@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Main.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CoffeeMaker_Cucumber_Assign</a> &gt; <a href="index.source.html" class="el_package">edu.ncsu.csc326.coffeemaker</a> &gt; <span class="el_source">Main.java</span></div><h1>Main.java</h1><pre class="source lang-java linenums">package edu.ncsu.csc326.coffeemaker;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+import edu.ncsu.csc326.coffeemaker.CoffeeMakerUI.Mode;
+import edu.ncsu.csc326.coffeemaker.CoffeeMakerUI.Status;
+import edu.ncsu.csc326.coffeemaker.UICmd.AddInventory;
+import edu.ncsu.csc326.coffeemaker.UICmd.CheckInventory;
+import edu.ncsu.csc326.coffeemaker.UICmd.ChooseRecipe;
+import edu.ncsu.csc326.coffeemaker.UICmd.ChooseService;
+import edu.ncsu.csc326.coffeemaker.UICmd.Command;
+import edu.ncsu.csc326.coffeemaker.UICmd.DescribeRecipe;
+import edu.ncsu.csc326.coffeemaker.UICmd.InsertMoney;
+import edu.ncsu.csc326.coffeemaker.UICmd.Reset;
+import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
+
+/**
+ * 
+ * @author Sarah Heckman; modified by Mike Whalen
+ *
+ * Starts the console UI for the CoffeeMaker
+ */
+public class Main {
+    private CoffeeMakerUI coffeeMakerMain;
+
+    /**
+     * Prints the main menu and handles user input for 
+     * main menu commands.
+     */
+    
+    public Command waitingMode() throws IOException {
+<span class="nc" id="L34">        System.out.println(&quot;1. Add a recipe&quot;);</span>
+<span class="nc" id="L35">        System.out.println(&quot;2. Delete a recipe&quot;);</span>
+<span class="nc" id="L36">        System.out.println(&quot;3. Edit a recipe&quot;);</span>
+<span class="nc" id="L37">        System.out.println(&quot;4. Add inventory&quot;);</span>
+<span class="nc" id="L38">        System.out.println(&quot;5. Check inventory&quot;);</span>
+<span class="nc" id="L39">        System.out.println(&quot;6. Purchase coffee&quot;);</span>
+<span class="nc" id="L40">        System.out.println(&quot;7. Insert money&quot;);</span>
+<span class="nc" id="L41">        System.out.println(&quot;0. Exit\n&quot;);</span>
+
+        try {
+<span class="nc" id="L44">        	int userInput = Integer.parseInt(inputOutput(&quot;Please press the number that corresponds to what you would like the coffee maker to do.&quot;));</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">        	if (userInput == 0) {</span>
+<span class="nc" id="L46">        		System.exit(0);</span>
+        	} else {
+<span class="nc" id="L48">        		return new ChooseService(userInput);</span>
+        	}
+<span class="nc" id="L50">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L51">        	System.out.println(&quot;Choice out of range.  Please enter number between 0-6&quot;);</span>
+<span class="nc" id="L52">        }</span>
+<span class="nc" id="L53">		return null;</span>
+    }
+
+    
+    public Recipe createRecipe() throws RecipeException, IOException {
+    	
+	    
+	    //Read in recipe price
+<span class="nc" id="L61">	    String priceString = inputOutput(&quot;\nPlease enter the recipe price: $&quot;);</span>
+	    	    
+	    //Read in amt coffee
+<span class="nc" id="L64">	    String coffeeString = inputOutput(&quot;\nPlease enter the units of coffee in the recipe: &quot;);</span>
+	    	    
+	    //Read in amt milk
+<span class="nc" id="L67">	    String milkString = inputOutput(&quot;\nPlease enter the units of milk in the recipe: &quot;);</span>
+	    	    
+	    //Read in amt sugar
+<span class="nc" id="L70">	    String sugarString = inputOutput(&quot;\nPlease enter the units of sugar in the recipe: &quot;);</span>
+	    	    
+	    //Read in amt chocolate
+<span class="nc" id="L73">	    String chocolateString = inputOutput(&quot;\nPlease enter the units of chocolate in the recipe: &quot;);</span>
+	    	    
+<span class="nc" id="L75">		Recipe r = new Recipe();</span>
+<span class="nc" id="L76">		r.setPrice(priceString);</span>
+<span class="nc" id="L77">		r.setAmtCoffee(coffeeString);</span>
+<span class="nc" id="L78">		r.setAmtMilk(milkString);</span>
+<span class="nc" id="L79">		r.setAmtSugar(sugarString);</span>
+<span class="nc" id="L80">		r.setAmtChocolate(chocolateString);</span>
+<span class="nc" id="L81">		return r;</span>
+    }
+    
+    
+    /**
+     * The add recipe user interface that process user input.
+     */
+	public Command addRecipe() throws RecipeException, IOException {
+<span class="nc" id="L89">		Recipe r = createRecipe(); </span>
+		//Read in recipe name
+<span class="nc" id="L91">	    String name = inputOutput(&quot;\nPlease enter the recipe name: &quot;);</span>
+<span class="nc" id="L92">		r.setName(name);</span>
+		
+<span class="nc" id="L94">		return new DescribeRecipe(r);</span>
+    }
+    
+	
+	/**
+	 * Delete recipe user interface that processes input.
+	 */
+    public Command deleteRecipe() throws IOException {
+<span class="nc" id="L102">    	coffeeMakerMain.displayRecipes();</span>
+<span class="nc" id="L103">    	int recipeToDelete = recipeListSelection(&quot;Please select the number of the recipe to delete.&quot;);</span>
+        
+<span class="nc bnc" id="L105" title="All 2 branches missed.">	    if(recipeToDelete &lt; 0) {</span>
+<span class="nc" id="L106">	    	return null;</span>
+	    }
+<span class="nc" id="L108">	    else return new ChooseRecipe(recipeToDelete);</span>
+    }
+    
+    /**
+     * Edit recipe user interface the processes user input.
+     */
+    public Command editRecipe() throws RecipeException, IOException {
+<span class="nc" id="L115">    	coffeeMakerMain.displayRecipes();</span>
+<span class="nc" id="L116">    	int recipeToEdit = recipeListSelection(&quot;Please select the number of the recipe to edit.&quot;);</span>
+    	
+<span class="nc bnc" id="L118" title="All 2 branches missed.">	    if(recipeToEdit &lt; 0) { return null; } </span>
+<span class="nc" id="L119">        coffeeMakerMain.UI_Input(new ChooseRecipe(recipeToEdit));</span>
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        if (coffeeMakerMain.getStatus() == Status.OK) {</span>
+<span class="nc" id="L121">        	return new DescribeRecipe(createRecipe());</span>
+        } else {
+<span class="nc" id="L123">        	return null;</span>
+        }
+    }
+    
+    /**
+     * Add inventory user interface that processes input.
+     */
+    public Command addInventory() throws IOException {
+	    //Read in amt coffee
+<span class="nc" id="L132">	    String coffeeString = inputOutput(&quot;\nPlease enter the units of coffee to add: &quot;);</span>
+	    	    
+	    //Read in amt milk
+<span class="nc" id="L135">	    String milkString = inputOutput(&quot;\nPlease enter the units of milk to add: &quot;);</span>
+	    	    
+	    //Read in amt sugar
+<span class="nc" id="L138">	    String sugarString = inputOutput(&quot;\nPlease enter the units of sugar to add: &quot;);</span>
+	    	    
+	    //Read in amt chocolate
+<span class="nc" id="L141">	    String chocolateString = inputOutput(&quot;\nPlease enter the units of chocolate to add: &quot;);</span>
+	    
+<span class="nc" id="L143">	    return new AddInventory(Integer.parseInt(coffeeString), </span>
+<span class="nc" id="L144">	    		Integer.parseInt(milkString), </span>
+<span class="nc" id="L145">	    		Integer.parseInt(sugarString), </span>
+<span class="nc" id="L146">	    		Integer.parseInt(chocolateString));</span>
+    }
+    
+    /**
+     * Check inventory user interface that processes input.
+     */
+    public Command checkInventory() {
+<span class="nc" id="L153">    	return new CheckInventory();</span>
+    }
+    
+    public Command insertMoney() throws IOException {
+<span class="nc" id="L157">        String amountPaid = inputOutput(&quot;Please enter the amount you wish to insert&quot;);</span>
+<span class="nc" id="L158">        int amtPaid = Integer.parseInt(amountPaid);</span>
+<span class="nc" id="L159">    	return new InsertMoney(amtPaid);</span>
+    }
+    /**
+     * Make coffee user interface the processes input.
+     */
+    public Command purchaseBeverage() throws NumberFormatException, IOException {
+<span class="nc" id="L165">    	coffeeMakerMain.displayRecipes();</span>
+    	
+<span class="nc" id="L167">        int recipeToPurchase = recipeListSelection(&quot;Please select the number of the recipe to purchase.&quot;);</span>
+<span class="nc" id="L168">        return new ChooseRecipe(recipeToPurchase);</span>
+    }
+    
+    /**
+     * Passes a prompt to the user and returns the user specified 
+     * string.
+     * @param message
+     * @return String
+     */
+    private static String inputOutput(String message) throws IOException {
+<span class="nc" id="L178">        System.out.println(message);</span>
+<span class="nc" id="L179">	    BufferedReader br = new BufferedReader(new InputStreamReader(System.in));</span>
+<span class="nc" id="L180">	    String returnString = &quot;&quot;;</span>
+	    try {
+<span class="nc" id="L182">	        returnString = br.readLine();</span>
+	    }
+<span class="nc" id="L184">	    catch (IOException e){</span>
+<span class="nc" id="L185">	        System.out.println(&quot;Error reading in value&quot;);</span>
+<span class="nc" id="L186">	        throw e;</span>
+<span class="nc" id="L187">	    }</span>
+<span class="nc" id="L188">	    return returnString;</span>
+    }
+    
+    /**
+     * Passes a prompt to the user that deals with the recipe list
+     * and returns the user selected number.
+     * @param message
+     * @return int
+     */
+    private static int recipeListSelection(String message) throws IOException {
+<span class="nc" id="L198">    	String userSelection = inputOutput(message);</span>
+<span class="nc" id="L199">    	int recipe = 0;</span>
+        try {
+<span class="nc" id="L201">        	recipe = Integer.parseInt(userSelection) - 1;</span>
+<span class="nc bnc" id="L202" title="All 4 branches missed.">        	if (recipe &gt;= 0 &amp;&amp; recipe &lt;=2) {</span>
+        		//do nothing here.
+        	} else {
+<span class="nc" id="L205">        		throw new ArrayIndexOutOfBoundsException();</span>
+        	}
+<span class="nc" id="L207">        } catch (NumberFormatException e) {</span>
+<span class="nc" id="L208">        	System.out.println(&quot;Please select a number from 1-3.&quot;);</span>
+<span class="nc" id="L209">        	throw new ArrayIndexOutOfBoundsException();</span>
+<span class="nc" id="L210">        }</span>
+<span class="nc" id="L211">        return recipe;</span>
+    }
+    
+    Command getCommand() throws Exception {
+<span class="nc bnc" id="L215" title="All 8 branches missed.">    	switch (coffeeMakerMain.mode) {</span>
+<span class="nc" id="L216">    	case WAITING: return waitingMode();</span>
+<span class="nc" id="L217">    	case ADD_RECIPE: return addRecipe();</span>
+<span class="nc" id="L218">    	case DELETE_RECIPE: return deleteRecipe();</span>
+<span class="nc" id="L219">    	case EDIT_RECIPE: return editRecipe();</span>
+<span class="nc" id="L220">    	case ADD_INVENTORY: return addInventory();</span>
+<span class="nc" id="L221">    	case CHECK_INVENTORY: return checkInventory();</span>
+<span class="nc" id="L222">    	case PURCHASE_BEVERAGE: return purchaseBeverage();</span>
+<span class="nc" id="L223">    	default: return null;</span>
+    	}
+    }
+    
+    /**
+     * Starts the coffee maker program.
+     * @param args
+     */
+<span class="nc" id="L231">    public Main() {</span>
+<span class="nc" id="L232">	    coffeeMakerMain = new CoffeeMakerUI(new CoffeeMaker(new RecipeBook(), new Inventory()));</span>
+<span class="nc" id="L233">    }</span>
+
+    public void run() {
+	    CoffeeMakerUI.Status status;
+	    
+<span class="nc" id="L238">	    System.out.println(&quot;Welcome to the CoffeeMaker!\n&quot;);</span>
+	    
+    	while (true) {
+    		try {
+<span class="nc" id="L242">	    		Command cmd = getCommand();</span>
+<span class="nc bnc" id="L243" title="All 2 branches missed.">	    		if (cmd != null) {</span>
+<span class="nc" id="L244">	    			coffeeMakerMain.UI_Input(cmd);</span>
+<span class="nc" id="L245">		    		status = coffeeMakerMain.getStatus(); </span>
+	    		} else {
+<span class="nc" id="L247">		    		status = coffeeMakerMain.getStatus(); </span>
+<span class="nc bnc" id="L248" title="All 2 branches missed.">	    			if (status == Status.OK)</span>
+<span class="nc" id="L249">	    				status = Status.UNKNOWN_ERROR;</span>
+	    		}
+	    	}
+<span class="nc" id="L252">    		catch (ArrayIndexOutOfBoundsException e) {</span>
+<span class="nc" id="L253">    			System.out.println(&quot;Out of range exception occurred: &quot; + e.toString());</span>
+<span class="nc" id="L254">    			status = Status.OUT_OF_RANGE; </span>
+    		}
+<span class="nc" id="L256">    		catch (RecipeException e) {</span>
+<span class="nc" id="L257">    			System.out.println(&quot;Recipe exception occurred: &quot; + e.toString());</span>
+<span class="nc" id="L258">    			status = Status.RECIPE_NOT_ADDED; </span>
+    		}
+<span class="nc" id="L260">    		catch (Exception e) {</span>
+<span class="nc" id="L261">	    		System.out.println(&quot;Exception occurred: &quot; + e.toString());</span>
+<span class="nc" id="L262">	    		status = Status.UNKNOWN_ERROR; </span>
+<span class="nc" id="L263">	    	}</span>
+<span class="nc" id="L264">			System.out.println(&quot;Mode: &quot; + coffeeMakerMain.getMode());</span>
+<span class="nc" id="L265">			System.out.println(&quot;Status: &quot; + status);</span>
+<span class="nc" id="L266">			System.out.println(&quot;Money in machine: &quot; + coffeeMakerMain.moneyInserted);</span>
+<span class="nc" id="L267">			System.out.println(&quot;Money in coin return: &quot; + coffeeMakerMain.moneyInTray);</span>
+			// To get back to a stable state.  This should probably be a 
+			// user action.
+<span class="nc bnc" id="L270" title="All 2 branches missed.">			if (status != Status.OK) {</span>
+<span class="nc" id="L271">				coffeeMakerMain.UI_Input(new Reset());</span>
+			}
+    	}
+    }
+    public static void main(String[] args) {
+<span class="nc" id="L276">    	new Main().run(); </span>
+<span class="nc" id="L277">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

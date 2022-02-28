@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Add Inventory" tests="6" skipped="2" failures="2" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.015">
+  <properties/>
+  <testcase name="Given an empty recipe book" classname="Scenario: Add Inventory" time="0.0"/>
+  <testcase name="When user add inventory" classname="Scenario: Add Inventory" time="0.0"/>
+  <testcase name="Then check inventory" classname="Scenario: Add Inventory" time="0.0">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;... 25&#10;Milk: 24&#10;Sugar: [23&#10;Chocolate: 22]&#10;&gt; but was:&lt;... 25&#10;Milk: 24&#10;Sugar: [15&#10;Chocolate: 15]&#10;&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;... 25
+Milk: 24
+Sugar: [23
+Chocolate: 22]
+&gt; but was:&lt;... 25
+Milk: 24
+Sugar: [15
+Chocolate: 15]
+&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_inventory(TestSteps.java:195)
+	at ✽.Then check inventory(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:152)
+</failure>
+  </testcase>
+  <testcase name="And the coffee maker should return to the WAITING mode" classname="Scenario: Add Inventory" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="And the status should be OK" classname="Scenario: Add Inventory" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="classMethod" classname="Scenario: Add Inventory" time="0.016">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;... 25&#10;Milk: 24&#10;Sugar: [23&#10;Chocolate: 22]&#10;&gt; but was:&lt;... 25&#10;Milk: 24&#10;Sugar: [15&#10;Chocolate: 15]&#10;&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;... 25
+Milk: 24
+Sugar: [23
+Chocolate: 22]
+&gt; but was:&lt;... 25
+Milk: 24
+Sugar: [15
+Chocolate: 15]
+&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_inventory(TestSteps.java:195)
+	at ✽.Then check inventory(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:152)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

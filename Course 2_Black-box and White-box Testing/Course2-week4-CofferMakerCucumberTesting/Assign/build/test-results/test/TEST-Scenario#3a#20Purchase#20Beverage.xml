@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Purchase Beverage" tests="8" skipped="3" failures="2" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.002">
+  <properties/>
+  <testcase name="Given a default recipe book" classname="Scenario: Purchase Beverage" time="0.0"/>
+  <testcase name="When insert money 120" classname="Scenario: Purchase Beverage" time="0.0"/>
+  <testcase name="When purchase coffee 0" classname="Scenario: Purchase Beverage" time="0.0"/>
+  <testcase name="Then check inventory" classname="Scenario: Purchase Beverage" time="0.0">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;Coffee: 1[2]&#10;Milk: 14&#10;Sugar: 14&#10;...&gt; but was:&lt;Coffee: 1[8]&#10;Milk: 14&#10;Sugar: 14&#10;...&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;Coffee: 1[2]
+Milk: 14
+Sugar: 14
+...&gt; but was:&lt;Coffee: 1[8]
+Milk: 14
+Sugar: 14
+...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_inventory(TestSteps.java:195)
+	at ✽.Then check inventory(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:187)
+</failure>
+  </testcase>
+  <testcase name="And the coffee maker should return to the WAITING mode" classname="Scenario: Purchase Beverage" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="And the status should be OK" classname="Scenario: Purchase Beverage" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="And we should take money from tray 70" classname="Scenario: Purchase Beverage" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="classMethod" classname="Scenario: Purchase Beverage" time="0.002">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;Coffee: 1[2]&#10;Milk: 14&#10;Sugar: 14&#10;...&gt; but was:&lt;Coffee: 1[8]&#10;Milk: 14&#10;Sugar: 14&#10;...&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;Coffee: 1[2]
+Milk: 14
+Sugar: 14
+...&gt; but was:&lt;Coffee: 1[8]
+Milk: 14
+Sugar: 14
+...&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_inventory(TestSteps.java:195)
+	at ✽.Then check inventory(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:187)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

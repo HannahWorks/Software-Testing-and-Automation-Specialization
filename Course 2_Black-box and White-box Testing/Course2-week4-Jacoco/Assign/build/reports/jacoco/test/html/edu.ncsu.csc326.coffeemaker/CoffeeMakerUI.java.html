@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CoffeeMakerUI.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CoffeeMaker_Cucumber_Assign</a> &gt; <a href="index.source.html" class="el_package">edu.ncsu.csc326.coffeemaker</a> &gt; <span class="el_source">CoffeeMakerUI.java</span></div><h1>CoffeeMakerUI.java</h1><pre class="source lang-java linenums">package edu.ncsu.csc326.coffeemaker;
+
+import edu.ncsu.csc326.coffeemaker.UICmd.AddInventory;
+import edu.ncsu.csc326.coffeemaker.UICmd.CheckInventory;
+import edu.ncsu.csc326.coffeemaker.UICmd.ChooseRecipe;
+import edu.ncsu.csc326.coffeemaker.UICmd.ChooseService;
+import edu.ncsu.csc326.coffeemaker.UICmd.Command;
+import edu.ncsu.csc326.coffeemaker.UICmd.DescribeRecipe;
+import edu.ncsu.csc326.coffeemaker.UICmd.InsertMoney;
+import edu.ncsu.csc326.coffeemaker.UICmd.Reset;
+import edu.ncsu.csc326.coffeemaker.UICmd.TakeMoneyFromTray;
+import edu.ncsu.csc326.coffeemaker.exceptions.InventoryException;
+import edu.ncsu.csc326.coffeemaker.exceptions.RecipeException;
+
+public class CoffeeMakerUI {
+
+<span class="fc" id="L17">	public enum Mode {WAITING, ADD_RECIPE, DELETE_RECIPE, EDIT_RECIPE, ADD_INVENTORY, CHECK_INVENTORY, PURCHASE_BEVERAGE};</span>
+<span class="fc" id="L18">	public enum Status { OK, WRONG_MODE, RECIPE_NOT_ADDED, OUT_OF_RANGE, INSUFFICIENT_FUNDS, UNKNOWN_ERROR };</span>
+	
+<span class="fc" id="L20">	public final int NO_CHOSEN_RECIPE = -1;</span>
+	
+<span class="fc" id="L22">	Mode mode = Mode.WAITING;</span>
+<span class="fc" id="L23">	Status status = Status.OK;</span>
+<span class="fc" id="L24">	int moneyInserted = 0;</span>
+<span class="fc" id="L25">	int moneyInTray = 0;</span>
+<span class="fc" id="L26">	int chosenRecipe = -1;</span>
+	CoffeeMaker coffeeMaker;
+
+<span class="fc" id="L29">	public CoffeeMakerUI(CoffeeMaker coffeeMaker) {</span>
+<span class="fc" id="L30">		this.coffeeMaker = coffeeMaker;</span>
+<span class="fc" id="L31">	}</span>
+	
+		
+	public Mode getMode() {
+<span class="fc" id="L35">		return mode;</span>
+	}
+	
+	public void defaultCommands(Command cmd) {
+<span class="pc bpc" id="L39" title="1 of 2 branches missed.">		if (cmd instanceof InsertMoney) {</span>
+<span class="fc" id="L40">			int amount = ((InsertMoney)cmd).amount;</span>
+<span class="pc bpc" id="L41" title="1 of 2 branches missed.">			if (amount &gt; 0) {</span>
+<span class="fc" id="L42">				moneyInserted += amount;</span>
+<span class="fc" id="L43">				System.out.println(&quot;Money in machine: &quot; + moneyInserted);</span>
+<span class="fc" id="L44">				status = Status.OK;</span>
+			} else {
+<span class="nc" id="L46">				status = Status.OUT_OF_RANGE;</span>
+			}
+<span class="pc bnc" id="L48" title="All 2 branches missed.">		} else if (cmd instanceof TakeMoneyFromTray) {</span>
+<span class="nc" id="L49">			moneyInTray = 0;</span>
+<span class="nc" id="L50">			status = Status.OK;</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">		} else if (cmd instanceof Reset) {</span>
+<span class="nc" id="L52">			mode = Mode.WAITING;</span>
+		}
+		else {
+<span class="nc" id="L55">			status = Status.WRONG_MODE; </span>
+		}		
+<span class="fc" id="L57">	}</span>
+	
+	public void displayRecipes() {
+<span class="nc" id="L60">		System.out.println(&quot;Recipes: &quot;);</span>
+<span class="nc" id="L61">        Recipe [] recipes = coffeeMaker.getRecipes();</span>
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        for(int i = 0; i &lt; recipes.length; i++) {</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        	if (recipes[i] != null) {</span>
+<span class="nc" id="L64">        		System.out.println((i+1) + &quot;. &quot; + recipes[i].getName());</span>
+        	}
+        }
+<span class="nc" id="L67">	}</span>
+	
+	public Recipe [] getRecipes() {
+<span class="nc" id="L70">		return coffeeMaker.getRecipes();</span>
+	}
+	
+	public void UI_Input(Command cmd) {
+<span class="pc bpc" id="L74" title="2 of 8 branches missed.">		switch(mode) {</span>
+		case WAITING: 
+<span class="fc" id="L76">			chosenRecipe = NO_CHOSEN_RECIPE;</span>
+<span class="fc bfc" id="L77" title="All 2 branches covered.">			if (cmd instanceof ChooseService) {</span>
+<span class="fc" id="L78">				mode = ((ChooseService)cmd).mode;</span>
+<span class="fc" id="L79">				status = Status.OK; </span>
+			} else {
+<span class="fc" id="L81">				defaultCommands(cmd);</span>
+			}
+<span class="fc" id="L83">			break;</span>
+		case ADD_RECIPE: 
+<span class="pc bpc" id="L85" title="1 of 2 branches missed.">			if (cmd instanceof DescribeRecipe) {</span>
+<span class="fc" id="L86">				boolean success = coffeeMaker.addRecipe(((DescribeRecipe)cmd).recipe);</span>
+<span class="fc bfc" id="L87" title="All 2 branches covered.">				status = (success) ? Status.OK : Status.RECIPE_NOT_ADDED; </span>
+<span class="fc" id="L88">				mode = Mode.WAITING;</span>
+<span class="fc" id="L89">			} else {</span>
+<span class="nc" id="L90">				defaultCommands(cmd); </span>
+			}
+<span class="nc" id="L92">			break;</span>
+		case DELETE_RECIPE: 
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">			if (cmd instanceof ChooseRecipe) {</span>
+<span class="fc" id="L95">				String result = coffeeMaker.deleteRecipe(((ChooseRecipe)cmd).number);</span>
+<span class="fc bfc" id="L96" title="All 2 branches covered.">				if (result == null) {</span>
+<span class="fc" id="L97">					status = Status.OUT_OF_RANGE;</span>
+				} else {
+<span class="fc" id="L99">					status = Status.OK;</span>
+				}
+<span class="fc" id="L101">				mode = Mode.WAITING;</span>
+<span class="fc" id="L102">			}</span>
+			break;
+		case EDIT_RECIPE: 
+<span class="fc bfc" id="L105" title="All 2 branches covered.">			if (cmd instanceof ChooseRecipe) {</span>
+<span class="fc" id="L106">				this.chosenRecipe = ((ChooseRecipe)cmd).number;</span>
+<span class="pc bpc" id="L107" title="1 of 2 branches missed.">				if (this.chosenRecipe &lt; 0 || </span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">					this.chosenRecipe &gt;= coffeeMaker.getRecipes().length || </span>
+<span class="fc bfc" id="L109" title="All 2 branches covered.">					coffeeMaker.getRecipes()[this.chosenRecipe] == null) {</span>
+<span class="fc" id="L110">					status = Status.OUT_OF_RANGE;</span>
+<span class="fc" id="L111">					mode = Mode.WAITING;</span>
+				} else {
+<span class="fc" id="L113">					status = Status.OK;</span>
+				}
+<span class="pc bpc" id="L115" title="1 of 2 branches missed.">			} else if (cmd instanceof DescribeRecipe) {</span>
+<span class="fc" id="L116">				String result = coffeeMaker.editRecipe(this.chosenRecipe, ((DescribeRecipe)cmd).recipe);</span>
+<span class="pc bpc" id="L117" title="1 of 2 branches missed.">				if (result == null) {</span>
+<span class="nc" id="L118">					status = Status.RECIPE_NOT_ADDED; </span>
+<span class="nc" id="L119">					mode = Mode.WAITING;</span>
+				} else {
+<span class="fc" id="L121">					status = Status.OK;</span>
+<span class="fc" id="L122">					mode = Mode.WAITING;</span>
+				}
+<span class="fc" id="L124">			} else {</span>
+<span class="nc" id="L125">				defaultCommands(cmd);</span>
+			}
+<span class="nc" id="L127">			break ;</span>
+		case ADD_INVENTORY: 
+<span class="pc bpc" id="L129" title="1 of 2 branches missed.">			if (cmd instanceof AddInventory) {</span>
+<span class="fc" id="L130">				AddInventory aiCmd = (AddInventory)cmd;</span>
+				try { 
+<span class="nc" id="L132">					coffeeMaker.addInventory(&quot;&quot; + aiCmd.amtCoffee, </span>
+						&quot;&quot; + aiCmd.amtMilk, 
+						&quot;&quot; + aiCmd.amtSugar, 
+						&quot;&quot; + aiCmd.amtChocolate);
+<span class="nc" id="L136">					status = Status.OK;</span>
+<span class="fc" id="L137">				} catch (InventoryException ie) {</span>
+<span class="fc" id="L138">					System.out.println(ie); </span>
+<span class="fc" id="L139">					status = Status.OUT_OF_RANGE; </span>
+<span class="nc" id="L140">				}</span>
+<span class="fc" id="L141">				mode = Mode.WAITING;</span>
+<span class="fc" id="L142">			} else {</span>
+<span class="nc" id="L143">				defaultCommands(cmd);</span>
+			}
+<span class="nc" id="L145">			break;</span>
+		case CHECK_INVENTORY : 
+<span class="nc bnc" id="L147" title="All 2 branches missed.">			if (cmd instanceof CheckInventory) {</span>
+<span class="nc" id="L148">				CheckInventory ciCmd = (CheckInventory)cmd;</span>
+<span class="nc" id="L149">				String result = coffeeMaker.checkInventory(); </span>
+<span class="nc" id="L150">				System.out.println(result);</span>
+<span class="nc" id="L151">				ciCmd.setInventory(result);</span>
+<span class="nc" id="L152">				status = Status.OK;</span>
+<span class="nc" id="L153">				mode = Mode.WAITING;</span>
+<span class="nc" id="L154">			} else {</span>
+<span class="nc" id="L155">				defaultCommands(cmd);</span>
+			}
+<span class="nc" id="L157">			break;</span>
+		case PURCHASE_BEVERAGE:
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">			if (cmd instanceof ChooseRecipe) {</span>
+<span class="fc" id="L160">				ChooseRecipe crCmd = (ChooseRecipe)cmd;</span>
+				try { 
+<span class="fc" id="L162">					int remainder = coffeeMaker.makeCoffee(crCmd.number, this.moneyInserted);</span>
+<span class="fc" id="L163">					System.out.println(&quot;moneyInserted: &quot; + moneyInserted + &quot; remainder: &quot; + remainder);</span>
+<span class="fc bfc" id="L164" title="All 2 branches covered.">					if (moneyInserted == remainder) {</span>
+<span class="fc" id="L165">						this.status = Status.INSUFFICIENT_FUNDS; </span>
+					} else {
+<span class="fc" id="L167">						System.out.println(&quot;Beverage purchased.&quot;);</span>
+<span class="fc" id="L168">						this.status = Status.OK;</span>
+<span class="fc" id="L169">						this.moneyInTray += remainder;</span>
+<span class="fc" id="L170">						this.moneyInserted = 0; </span>
+					}
+<span class="nc" id="L172">				} catch (RecipeException re) {</span>
+<span class="nc" id="L173">					this.status = Status.OUT_OF_RANGE; </span>
+<span class="fc" id="L174">				}</span>
+<span class="fc" id="L175">				this.mode = Mode.WAITING;</span>
+<span class="fc" id="L176">			} else {</span>
+<span class="nc" id="L177">				defaultCommands(cmd);</span>
+			}
+			break;
+		}
+		// System.out.println(&quot;Executed: &quot; + cmd + &quot;; Mode = &quot; + mode + &quot;; Status = &quot; + status);
+<span class="fc" id="L182">	}</span>
+	
+	public Status getStatus() {
+<span class="fc" id="L185">		return status;</span>
+	}
+	
+	public int getMoneyInserted() {
+<span class="nc" id="L189">		return moneyInserted;</span>
+	}
+	
+	public int getMoneyInTray() {
+<span class="nc" id="L193">		return moneyInTray;</span>
+	}
+	
+	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

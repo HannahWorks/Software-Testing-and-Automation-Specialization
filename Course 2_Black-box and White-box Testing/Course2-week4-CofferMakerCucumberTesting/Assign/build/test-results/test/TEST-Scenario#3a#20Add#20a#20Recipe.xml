@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Add a Recipe" tests="5" skipped="0" failures="0" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.002">
+  <properties/>
+  <testcase name="Given an empty recipe book" classname="Scenario: Add a Recipe" time="0.0"/>
+  <testcase name="When user submits a recipe" classname="Scenario: Add a Recipe" time="0.0"/>
+  <testcase name="Then the coffee maker should return to the WAITING mode" classname="Scenario: Add a Recipe" time="0.0"/>
+  <testcase name="And the status should be OK" classname="Scenario: Add a Recipe" time="0.0"/>
+  <testcase name="classMethod" classname="Scenario: Add a Recipe" time="0.002"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

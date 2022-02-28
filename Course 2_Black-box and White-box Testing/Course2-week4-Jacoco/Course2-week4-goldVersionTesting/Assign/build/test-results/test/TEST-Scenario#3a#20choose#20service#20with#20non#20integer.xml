@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: choose service with non integer" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-02-12T06:52:18" hostname="DESKTOP-5B35QQB" time="0.0">
+  <properties/>
+  <testcase name="When user enter the option test it will catch the exception" classname="Scenario: choose service with non integer" time="0.0"/>
+  <testcase name="classMethod" classname="Scenario: choose service with non integer" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

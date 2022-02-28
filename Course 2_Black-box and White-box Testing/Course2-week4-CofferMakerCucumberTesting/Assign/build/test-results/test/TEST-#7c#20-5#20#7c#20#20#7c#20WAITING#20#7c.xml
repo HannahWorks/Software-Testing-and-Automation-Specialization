@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="| -5 |  | WAITING |" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.001">
+  <properties/>
+  <testcase name="Given a default recipe book" classname="| -5 |  | WAITING |" time="0.0"/>
+  <testcase name="When I entered the option -5" classname="| -5 |  | WAITING |" time="0.0"/>
+  <testcase name="Then the coffee maker should return to the WAITING mode" classname="| -5 |  | WAITING |" time="0.0"/>
+  <testcase name="classMethod" classname="| -5 |  | WAITING |" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

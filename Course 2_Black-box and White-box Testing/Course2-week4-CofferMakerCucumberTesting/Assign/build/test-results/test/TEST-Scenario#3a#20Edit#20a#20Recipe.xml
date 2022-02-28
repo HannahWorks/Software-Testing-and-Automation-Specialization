@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Edit a Recipe" tests="6" skipped="2" failures="2" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.003">
+  <properties/>
+  <testcase name="Given a default recipe book" classname="Scenario: Edit a Recipe" time="0.0"/>
+  <testcase name="When user edit recipe 0" classname="Scenario: Edit a Recipe" time="0.0"/>
+  <testcase name="Then check updated recipe 0" classname="Scenario: Edit a Recipe" time="0.001">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;[Coffee]&gt; but was:&lt;[]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[Coffee]&gt; but was:&lt;[]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_updated_recipe(TestSteps.java:202)
+	at ✽.Then check updated recipe 0(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:121)
+</failure>
+  </testcase>
+  <testcase name="And the coffee maker should return to the WAITING mode" classname="Scenario: Edit a Recipe" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="And the status should be OK" classname="Scenario: Edit a Recipe" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="classMethod" classname="Scenario: Edit a Recipe" time="0.003">
+    <failure message="org.junit.ComparisonFailure: expected:&lt;[Coffee]&gt; but was:&lt;[]&gt;" type="org.junit.ComparisonFailure">org.junit.ComparisonFailure: expected:&lt;[Coffee]&gt; but was:&lt;[]&gt;
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.check_updated_recipe(TestSteps.java:202)
+	at ✽.Then check updated recipe 0(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:121)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

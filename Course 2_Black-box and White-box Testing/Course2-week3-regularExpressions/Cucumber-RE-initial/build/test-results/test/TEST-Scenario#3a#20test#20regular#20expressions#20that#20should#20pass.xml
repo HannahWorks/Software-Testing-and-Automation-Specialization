@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: test regular expressions that should pass" tests="20" skipped="0" failures="0" errors="0" timestamp="2022-02-07T08:11:10" hostname="DESKTOP-5B35QQB" time="0.007">
+  <properties/>
+  <testcase name="When test_posint 12345" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_posint 9" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_posint 77777777" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_int -1" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_int 1435" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_float 12345.543" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_float -13.56" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_ip_address 123.34.76.109" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_ip_address 123.34.76.109" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_ip_address 105.22.33.44" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_ip_address 1.2.3.4" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter spill" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter Sponge" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter tap" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter rebuild" classname="Scenario: test regular expressions that should pass" time="0.001"/>
+  <testcase name="When test_splitter2 spill" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter2 Sponge" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter2 tap" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="When test_splitter2 rebuild" classname="Scenario: test regular expressions that should pass" time="0.0"/>
+  <testcase name="classMethod" classname="Scenario: test regular expressions that should pass" time="0.074"/>
+  <system-out><![CDATA[test_posint true for: 12345
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

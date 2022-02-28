@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Scenario: Delete an Recipe out of range 1" tests="5" skipped="2" failures="2" errors="0" timestamp="2022-02-11T06:00:52" hostname="DESKTOP-5B35QQB" time="0.007">
+  <properties/>
+  <testcase name="Given an empty recipe book" classname="Scenario: Delete an Recipe out of range 1" time="0.0"/>
+  <testcase name="When user delete Recipe 6" classname="Scenario: Delete an Recipe out of range 1" time="0.002">
+    <failure message="java.lang.ArrayIndexOutOfBoundsException: 6" type="java.lang.ArrayIndexOutOfBoundsException">java.lang.ArrayIndexOutOfBoundsException: 6
+	at edu.ncsu.csc326.coffeemaker.RecipeBook.deleteRecipe(RecipeBook.java:71)
+	at edu.ncsu.csc326.coffeemaker.CoffeeMaker.deleteRecipe(CoffeeMaker.java:56)
+	at edu.ncsu.csc326.coffeemaker.CoffeeMakerUI.UI_Input(CoffeeMakerUI.java:95)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.user_delete_Recipe(TestSteps.java:260)
+	at ✽.When user delete Recipe 6(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:99)
+</failure>
+  </testcase>
+  <testcase name="Then the coffee maker should return to the WAITING mode" classname="Scenario: Delete an Recipe out of range 1" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="And the status should be OUT_OF_RANGE" classname="Scenario: Delete an Recipe out of range 1" time="0.0">
+    <skipped/>
+  </testcase>
+  <testcase name="classMethod" classname="Scenario: Delete an Recipe out of range 1" time="0.007">
+    <failure message="java.lang.ArrayIndexOutOfBoundsException: 6" type="java.lang.ArrayIndexOutOfBoundsException">java.lang.ArrayIndexOutOfBoundsException: 6
+	at edu.ncsu.csc326.coffeemaker.RecipeBook.deleteRecipe(RecipeBook.java:71)
+	at edu.ncsu.csc326.coffeemaker.CoffeeMaker.deleteRecipe(CoffeeMaker.java:56)
+	at edu.ncsu.csc326.coffeemaker.CoffeeMakerUI.UI_Input(CoffeeMakerUI.java:95)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.user_delete_Recipe(TestSteps.java:260)
+	at ✽.When user delete Recipe 6(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:99)
+</failure>
+  </testcase>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

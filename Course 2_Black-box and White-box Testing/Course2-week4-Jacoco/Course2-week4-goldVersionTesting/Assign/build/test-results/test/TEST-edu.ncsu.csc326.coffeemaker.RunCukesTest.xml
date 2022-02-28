@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="edu.ncsu.csc326.coffeemaker.RunCukesTest" tests="0" skipped="0" failures="0" errors="0" timestamp="1970-01-01T00:00:00" hostname="DESKTOP-5B35QQB" time="0.0">
+  <properties/>
+  <system-out><![CDATA[Recipes: 
+1. Coffee
+Recipes: 
+1. Coffee
+Recipes: 
+1. Coffee
+Coffee: 15
+Milk: 15
+Sugar: 15
+Chocolate: 15
+
+Money in machine: 120
+using recipes succeeded
+moneyInserted: 120 remainder: 70
+Beverage purchased.
+No recipe!
+moneyInserted: 0 remainder: 0
+Money in machine: 30
+not enough money: 50
+moneyInserted: 30 remainder: 30
+Recipes: 
+1. Coffee
+Money in machine: 20
+using recipes failed: 15
+moneyInserted: 20 remainder: 20
+Recipes: 
+1. Coffee
+Money in machine: 20
+using recipes failed: 15
+moneyInserted: 20 remainder: 20
+Recipes: 
+1. Coffee
+Money in machine: 20
+using recipes failed: 15
+moneyInserted: 20 remainder: 20
+Recipes: 
+1. Coffee
+Money in machine: 20
+using recipes failed: 15
+moneyInserted: 20 remainder: 20
+
+?[31mFailed scenarios:?[0m
+?[31medu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:247 ?[0m# Scenario: Purchase Beverage which doesn't exist
+
+35 Scenarios (?[31m1 failed?[0m, ?[32m34 passed?[0m)
+130 Steps (?[31m1 failed?[0m, ?[32m129 passed?[0m)
+0m0.126s
+
+org.junit.ComparisonFailure: expected:<[OUT_OF_RANGE]> but was:<[INSUFFICIENT_FUNDS]>
+	at org.junit.Assert.assertEquals(Assert.java:115)
+	at org.junit.Assert.assertEquals(Assert.java:144)
+	at edu.ncsu.csc326.coffeemaker.TestSteps.the_status_should_be_OK(TestSteps.java:393)
+	at ?.And the status should be OUT_OF_RANGE(edu/ncsu/csc326/coffeemaker/CoffeeMaker.feature:252)
+
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
